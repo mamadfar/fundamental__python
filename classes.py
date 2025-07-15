@@ -1,8 +1,9 @@
 
-#! Inheritance
+#! Super() and Inheritance
 
 class Animal:
     def __init__(self):
+        print("Animal created")
         self.age = 1
 
     def eat(self):
@@ -10,18 +11,49 @@ class Animal:
 
 
 class Mammal(Animal):
+    def __init__(self):
+        super().__init__()
+        print("Mammal created")
+        self.weight = 10
+
     def walk(self):
-        print("Walking...")
-
-
-class Fish(Animal):
-    def swim(self):
-        print("Swimming...")
+        pass
 
 
 m = Mammal()
 m.eat()
 print(m.age)
+
+
+#! Inheritance
+
+# class Animal:
+#     def __init__(self):
+#         self.age = 1
+
+#     def eat(self):
+#         print("Eating...")
+
+
+# class Mammal(Animal):
+#     def walk(self):
+#         print("Walking...")
+
+
+# class Fish(Animal):
+#     def swim(self):
+#         print("Swimming...")
+
+
+# m = Mammal()
+# m.eat()
+# print(m.age)
+# print(isinstance(m, Animal))
+# print(isinstance(m, Mammal))
+# print(isinstance(m, Fish))
+# print(isinstance(m, object))
+# print(issubclass(Mammal, Animal))
+# print(issubclass(Mammal, object))
 
 #! Properties and Decorators
 
