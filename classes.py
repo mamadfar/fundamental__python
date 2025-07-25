@@ -1,28 +1,184 @@
 
+#! Data classes
+
+# # * --------- Way 1 ---------
+# from collections import namedtuple
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+#     def __eq__(self, other: "Point"):
+#         return self.x == other.x and self.y == other.y
+
+
+# p1 = Point(1, 2)
+# p2 = Point(1, 2)
+# print(p1 == p2)
+
+# # * --------- Way 2 ---------
+# Point = namedtuple("Point", ["x", "y"])
+
+# p1 = Point(x=1, y=2)
+# p2 = Point(x=1, y=2)
+# print(p1 == p2)
+
+#! Extending built-in types
+
+class Text(str):
+    def duplicate(self):
+        return self + self
+
+
+text = Text("Hello ")
+print(text.duplicate())
+
+
+class TrackableList(list):
+    def append(self, object):
+        print(f"Adding {object} to the list")
+        super().append(object)
+
+
+trackable_list = TrackableList()
+trackable_list.append(1)
+
+#! Polymorphism and Interfaces
+
+# class Shape:
+#     def area(self):
+#         """Calculate the area of the shape."""
+#         raise NotImplementedError("Subclasses must implement this method")
+
+
+# class Circle(Shape):
+#     def __init__(self, radius):
+#         self.radius = radius
+
+#     def area(self):
+#         return 3.14 * self.radius * self.radius
+
+
+# class Square(Shape):
+#     def __init__(self, side):
+#         self.side = side
+
+#     def area(self):
+#         return self.side * self.side
+
+
+# def print_area(shapes: list[Shape]):
+#     for shape in shapes:
+#         if isinstance(shape, Shape):
+#             print(f"Area: {shape.area()}")
+#         else:
+#             print("Invalid shape type")
+
+
+# print_area([Circle(5), Square(4)])
+
+#! Abstract Base Classes
+
+# from abc import ABC, abstractmethod
+
+
+# class InvalidOperationError(Exception):
+#     pass
+
+
+# class Stream(ABC):
+#     def __init__(self):
+#         self.opened = False
+
+#     def open(self):
+#         if self.opened:
+#             raise InvalidOperationError("Stream is already opened")
+#         self.opened = True
+
+#     def close(self):
+#         if not self.opened:
+#             raise InvalidOperationError("Stream is not opened")
+#         self.opened = False
+
+#     @abstractmethod
+#     def read(self):
+#         """Read data from the stream."""
+#         pass
+
+
+# class FileStream(Stream):
+#     def read(self):
+#         print("Reading from file stream")
+
+
+# class NetworkStream(Stream):
+#     def read(self):
+#         print("Reading from network stream")
+
+
+# class MemoryStream(Stream):
+#     def read(self):
+#         print("Reading from memory stream")
+
+
+# stream = MemoryStream()
+# stream.open()
+
+#! Exceptions and inheritance
+# class InvalidOperationError(Exception):
+#     pass
+
+
+# class Stream:
+#     def __init__(self):
+#         self.opened = False
+
+#     def open(self):
+#         if self.opened:
+#             raise InvalidOperationError("Stream is already opened")
+#         self.opened = True
+
+#     def close(self):
+#         if not self.opened:
+#             raise InvalidOperationError("Stream is not opened")
+#         self.opened = False
+
+
+# class FileStream(Stream):
+#     def read(self):
+#         print("Reading from file stream")
+
+
+# class NetworkStream(Stream):
+#     def read(self):
+#         print("Reading from network stream")
+
 #! Super() and Inheritance
 
-class Animal:
-    def __init__(self):
-        print("Animal created")
-        self.age = 1
+# class Animal:
+#     def __init__(self):
+#         print("Animal created")
+#         self.age = 1
 
-    def eat(self):
-        print("Eating...")
-
-
-class Mammal(Animal):
-    def __init__(self):
-        super().__init__()
-        print("Mammal created")
-        self.weight = 10
-
-    def walk(self):
-        pass
+#     def eat(self):
+#         print("Eating...")
 
 
-m = Mammal()
-m.eat()
-print(m.age)
+# class Mammal(Animal):
+#     def __init__(self):
+#         super().__init__()
+#         print("Mammal created")
+#         self.weight = 10
+
+#     def walk(self):
+#         pass
+
+
+# m = Mammal()
+# m.eat()
+# print(m.age)
 
 
 #! Inheritance
