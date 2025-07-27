@@ -27,23 +27,23 @@
 
 #! Extending built-in types
 
-class Text(str):
-    def duplicate(self):
-        return self + self
+# class Text(str):
+#     def duplicate(self):
+#         return self + self
 
 
-text = Text("Hello ")
-print(text.duplicate())
+# text = Text("Hello ")
+# print(text.duplicate())
 
 
-class TrackableList(list):
-    def append(self, object):
-        print(f"Adding {object} to the list")
-        super().append(object)
+# class TrackableList(list):
+#     def append(self, object):
+#         print(f"Adding {object} to the list")
+#         super().append(object)
 
 
-trackable_list = TrackableList()
-trackable_list.append(1)
+# trackable_list = TrackableList()
+# trackable_list.append(1)
 
 #! Polymorphism and Interfaces
 
